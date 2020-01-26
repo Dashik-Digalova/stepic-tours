@@ -197,10 +197,10 @@ def main():
 @app.route('/from/<direction>/')
 def tours_direction(direction):
     search_tours = []
-    for tour_id, info in tours.items():
-        if direction == info['departure']:
-            info['tour_id']=tour_id
-            search_tours.append(info)
+    for tour_id, tour_info in tours.items():
+        if direction == tour_info['departure']:
+            tour_info['tour_id']=tour_id
+            search_tours.append(tour_info)
     output = render_template('direction.html', direction=direction, departures=departures, search_tours=search_tours)
     return output
 
