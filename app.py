@@ -199,10 +199,9 @@ def tours_direction(direction):
     search_tours = []
     for tour_id, info in tours.items():
         if direction == info['departure']:
-            tour_directions = tours.get(int(tour_id))
-            search_tours.append(tour_directions)
-    output = render_template('direction.html', tour_directions=tour_directions, direction=direction, departures=departures, tours=tours, search_tours=search_tours, tour_id=tour_id)
-    print()
+            info['tour_id']=tour_id
+            search_tours.append(info)
+    output = render_template('direction.html', direction=direction, departures=departures, search_tours=search_tours)
     return output
 
 

@@ -2,9 +2,9 @@
 
 {% block content %}
     {% for abbr, city in departures.items() %}
-    {% if abbr == direction %}
-    <h1 class="display-5 mt-4">Летим <span data-test="from">{{ city }}</span></h1>
-    {% endif %}
+        {% if abbr == direction %}
+        <h1 class="display-5 mt-4">Летим <span data-test="from">{{ city }}</span></h1>
+        {% endif %}
     {% endfor %}
     {% set min = search_tours|min(attribute="price") %}
     {% set max = search_tours|max(attribute="price") %}
@@ -14,14 +14,14 @@
 
 
 <div class="row mt-5" data-test="cards">
-    {% for tours_info in search_tours %}
+    {% for tour_info in search_tours %}
     <div class="col-4" data-test="card">
         <div class="card mb-3" >
-            <img src="{{ tours_info.picture }}" class="card-img-top img-fluid" data-test="picture">
+            <img src="{{ tour_info.picture }}" class="card-img-top img-fluid" data-test="picture">
             <div class="card-body">
-                <h5 class="card-title">{{ tours_info.title }}</h5>
-                <p class="card-text">{{ tours_info.description }}</p>
-                <a href="/tour/{{ tour_directions }}/" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+                <h5 class="card-title">{{ tour_info.title }}</h5>
+                <p class="card-text">{{ tour_info.description }}</p>
+                <a href="/tours/{{ tour_info.tour_id }}/" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
             </div>
         </div>
     </div>
