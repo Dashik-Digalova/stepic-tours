@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- HERO -->
+
+    <div class="jumbotron text-center mt-4">
+      <h1 class="display-4">{{ title }}</h1>
+      <p class="lead">{{ subtitle }}</p>
+      <p class="mt-5 w-50 mx-auto">{{ description }}</p>
+    </div>
+
+    <!-- CARDS -->
+
+    <div class="row mt-5" data-test="cards">
+       {% for tour_id, info in tours.items() %}
+        {% if tour_id <= 6 %}
+        <div class="col-4" data-test="card">
+            <div class="card mb-3">
+            <img src="{{ info.picture }}" class="card-img-top img-fluid" data-test="picture">
+                <div class="card-body">
+                <h5 class="card-title">{{ info.title }}</h5>
+                <p class="card-text">{{ info.description|truncate(100) }}</p>
+                <a href="/tours/{{tour_id}}/" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
